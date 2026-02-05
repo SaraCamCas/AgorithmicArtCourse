@@ -103,7 +103,6 @@ function drawIrregulargrid(recWidth, recHeight, recX, recY) {
         // Doesn't exceed remaining space
         columnWidth = min(columnWidth, remainingWidth);
         
-        // Draw this column
         let currentY = recY;
         
         
