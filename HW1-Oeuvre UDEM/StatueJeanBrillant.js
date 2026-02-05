@@ -1,8 +1,8 @@
-// The fractal trees were done inspired by Daniel Shiffmal fractal trees!
+// The fractal trees were inspired by Daniel Shiffmal fractal trees!
 // Source: https://www.youtube.com/watch?v=0jjeOYMjmDU
 
 var len, len1, angle, angle1 // Var for frost and tree
-var recdWidth, recHeight, recdX, recY // Var recs
+var recdWidth, recHeight, recdX, recX, blocks, recY, extraheight  // Var recs
 var maxflakes, snowX, snowWidth, snowY, snowHeight // Var snow
 
 function setup() {
@@ -20,7 +20,7 @@ function draw() {
   Statue();
   
   // Snow 
-  snowstrom(450, 0, width, 0, height);
+  snowstrom(1200, 0, width, 0, height);
   
   noLoop();
 }
@@ -29,13 +29,14 @@ function draw() {
 
 function Statue(){
   recWidth = 500;  
-  recHeight = 130; 
+  recHeight = 110; 
   recX = (width - recWidth) / 2;  // Center horizontally
   recY = (35)
-  
-  drawIrregularrecs(recWidth,recHeight+15,recX,recY);
-  let temp = recHeight+19 ;
-  for (let i=0; i < 4; i++){
+  extraheight = 15;
+  blocks = floor(random(2,6));
+  drawIrregularrecs(recWidth,recHeight+extraheight,recX,recY);
+  let temp = recHeight+extraheight+3 ;
+  for (let i=0; i < blocks; i++){
   drawIrregulargrid(recWidth,recHeight,recX,recY + temp);
   temp += recHeight+3;
   }
