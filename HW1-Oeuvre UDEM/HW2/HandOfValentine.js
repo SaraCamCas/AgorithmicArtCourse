@@ -18,7 +18,7 @@ let hands = [];
 
 function preload() {
   // Initialize HandPose model with flipped video input
-  handPose = ml5.handPose({ flipped: true, maxHands: 1});
+  handPose = ml5.handPose({ flipped: true});
 }
 function gotHands(results) {
   hands = results;
@@ -81,7 +81,7 @@ function heart(originX, originY, heartSize, heartColor, strokeColor) {
   
   fill(heartColor);
   beginShape();
-  for (let t = 0; t < TWO_PI; t += 0.05) { // Smaller step!
+  for (let t = 0; t < TWO_PI; t += 0.15) { // Smaller step!
     let x = heartSize * 16 * sin(t) * sin(t) * sin(t) / 18; // divide by 18 to make it smaller and fit in the cell
     let y = -heartSize * (13 * cos(t) - 5 * cos(2*t) - 2 * cos(3*t) - cos(4*t)) / 18; // divide by 18 to make it smaller and fit in the cell
     vertex(x, y); // Vertex create a continuous shape
@@ -142,11 +142,11 @@ function setup() {
   // Video setup
   video = createCapture(VIDEO, { 
     flipped: true,
-    audio: false,
-    video: {
+    audio: false
+    , video: {
       width: 260,    
       height: 220,
-      frameRate: 40 // ← Low = Fast
+      frameRate: 30 // ← Low = Fast
       }
   });
   video.hide();
@@ -179,7 +179,7 @@ function setup() {
 
   
   
-  frameRate(40); // Uncomment to slow down Slow down
+  frameRate(30); // Uncomment to slow down Slow down
 }
 
 function draw() {
@@ -228,7 +228,7 @@ function draw() {
 
   push();
   translate(width - 495, 30);
-  scale(0.75);  
+  scale(0.70);  
   image(video, 0, 0);
   pop();
 }
