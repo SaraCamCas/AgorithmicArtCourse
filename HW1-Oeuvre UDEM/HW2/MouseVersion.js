@@ -4,64 +4,12 @@
 // Source for the heart shape: https://mathworld.wolfram.com/HeartCurve.html
 let cols;
 let rows;
-let sizeH; // Size of each cell in the grid
+let size; // Size of each cell in the grid
 let grid = [];
 let nextGrid = [];
 let SmallColor; let BigColor; let MouseHeart; let InvisiHeart; let SmallColorSemi;// Pink for alive+
 
-// Variables for hand
-let video;
-let handPose;
-let hands = [];
 
-// Function for videos and hand detection
-
-function preload() {
-  // Initialize HandPose model with flipped video input
-  handPose = ml5.handPose({ flipped: true, maxHands: 1});
-}
-function gotHands(results) {
-  hands = results;
-}
-
-function addCellsAtFinger(x, y) {
-  let fingerCol = floor((x - sizeH/2) / sizeH);
-  let fingerRow = floor((y - sizeH/2) / sizeH);
-  
- // Making sure it does not go out of bound
-  if ((fingerCol >= 0) && (fingerCol < cols) && (fingerRow >= 0) && (fingerRow < rows)) {
-      for (let k = -1; k < 2; k++){
-        for (let j = -1; j < 2; j++) {      
-         let tempcol = (fingerCol + k + cols) % cols;
-         let temprow = (fingerRow + j + rows) % rows;
-      
-         if (grid[tempcol][temprow] === 0) { // Only set to alive 
-          nextGrid[tempcol][temprow] = 1;
-        }            
-    }
-      }
-
-    }
-}
-
-function HandInteraction() {
-  if (hands.length > 0){ // Ensure at least one hand is detected
-    let hand = hands[0];
-    let index = hand.keypoints[8];
-
-    
-    let x = map(index.x, 0, video.width, 0, width);
-    let y = map(index.y, 0, video.height, 0, height);
-
-    // Add cells around the finger position
-
-    addCellsAtFinger(x, y);
-    heart(x, y, sizeH * 4, InvisiHeart, MouseHeart); 
-
-}
-}
-
-// Functions for the heart
 function initialArray(cols, rows) {
   let arr = [];
   for (let i = 0; i < cols; i++) {
@@ -113,17 +61,17 @@ function drawingGrid() {
       if (grid[i][j] === 1) {
         
         // Draw with offset from edges 
-        let tempx = i * sizeH + sizeH / 2;
-        let tempy = j * sizeH + sizeH / 2;
+        let tempx = i * size + size / 2;
+        let tempy = j * size + size / 2;
         // Uncomment to draw squares instead of hearts
 
         //fill(255); // White for alive
-        //rect(tempx, tempy, sizeH*0.7, sizeH*0.7); 
+        //rect(tempx, tempy, size*0.7, size*0.7); 
 
         let colorOptions = [InvisiHeart, SmallColor, SmallColorSemi];
         let chosenColor = random(colorOptions);
 
-        heart(tempx, tempy, sizeH*0.7, chosenColor, SmallColor); 
+        heart(tempx, tempy, size*0.7, chosenColor, SmallColor); 
       } 
       
       
@@ -132,36 +80,17 @@ function drawingGrid() {
   }
 }
 
-///////////////////////////////////////////////////
+
 function setup() {
 
    // Title of the piece :)
   alert("Game of hearts! <3");
+
+
   createCanvas(windowWidth, windowHeight);
-
-  // Video setup
-  video = createCapture(VIDEO, { 
-    flipped: true,
-    audio: false,
-    video: {
-      width: 260,    
-      height: 220,
-      frameRate: 40 // ← Low = Fast
-      }
-  });
-  video.hide();
-  
-  
-
-  // Start detecting hands
-  handPose.detectStart(video, gotHands);
-
-  // Grid setup
-
-  sizeH = 30;
-  cols = floor(width / sizeH - 1);
-  rows = floor(height / sizeH - 1);
-
+  size = 25;
+  cols = floor(width / size - 1);
+  rows = floor(height / size - 1);
   
   // Set the pink colors
   SmallColor = color(224, 17, 95); // Rasberry Pink 
@@ -172,14 +101,9 @@ function setup() {
   
   // Initialize both grids 
   grid = initialArray(cols, rows);
-  nextGrid = [];
-  for (let i = 0; i < cols; i++) {
-    nextGrid[i] = new Array(rows).fill(0);
-  }
-
+  nextGrid = initialArray(cols, rows);
   
-  
-  frameRate(40); // Uncomment to slow down Slow down
+  //frameRate(10); // Uncomment to slow down Slow down
 }
 
 function draw() {
@@ -187,7 +111,7 @@ function draw() {
   rectMode(CENTER);
   
   // Background heart
-  heart(width/2, height/2, Math.min(windowWidth, windowHeight)*0.4, BigColor, SmallColorSemi); // Big heart in the background
+  heart(width/2, height/2, Math.min(windowWidth, windowHeight)*0.5, BigColor, SmallColorSemi); // Big heart in the background
   
   // Draw first gen
   drawingGrid();
@@ -219,18 +143,28 @@ function draw() {
   
   // Lets add life if the mouse is on top
   
-  HandInteraction();
+  let mouseCol = floor((mouseX - size/2) / size);
+  let mouseRow = floor((mouseY - size/2) / size);
+  
+ // Making sure it does not go out of bound
+  if (mouseIsPressed && (mouseCol >= 0) && (mouseCol < cols) && (mouseRow >= 0) && (mouseRow < rows)) {
+      for (let k = -1; k < 2; k++){
+        for (let j = -1; j < 2; j++) {      
+         let tempcol = (mouseCol + k + cols) % cols;
+         let temprow = (mouseRow + j + rows) % rows;
+      
+         nextGrid[tempcol][temprow] = 1;            // Set to alive
+    }
+      }
+
+    }
   
   // Swap grids
   let temp = grid;
   grid = nextGrid;
   nextGrid = temp;
 
-  push();
-  translate(width - 495, 30);
-  scale(0.75);  
-  image(video, 0, 0);
-  pop();
+  heart(mouseX, mouseY, size * 4, InvisiHeart, MouseHeart); // Heart following the mouse
 }
 
 
