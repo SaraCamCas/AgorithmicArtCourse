@@ -27,7 +27,7 @@ function heart(originX, originY, heartSize, heartColor, strokeColor) {
   for (let t = 0; t < TWO_PI; t += 0.05) { // Smaller step!
     let x = heartSize * 16 * sin(t) * sin(t) * sin(t) / 18; // divide by 18 to make it smaller and fit in the cell
     let y = -heartSize * (13 * cos(t) - 5 * cos(2*t) - 2 * cos(3*t) - cos(4*t)) / 18; // divide by 18 to make it smaller and fit in the cell
-    vertex(x, y); // Vertex create a continuous shape
+    vertex(x, y); // Vertex create a continuous shape (no se te olvide)
   }
   endShape(CLOSE);
   pop(); // Restore drawing state

@@ -20,7 +20,9 @@ function preload() {
   // Initialize HandPose model with flipped video input
   handPose = ml5.handPose({ flipped: true});
 }
+// Callback function for when handPose outputs data
 function gotHands(results) {
+  // save the output to the hands variable
   hands = results;
 }
 
@@ -143,11 +145,11 @@ function setup() {
   video = createCapture(VIDEO, { 
     flipped: true,
     audio: false
-    , video: {
-      width: 260,    
-      height: 220,
-      frameRate: 30 // ← Low = Fast
-      }
+ //   , video: {
+ //     width: 260,    
+ //     height: 220,
+ //     frameRate: 30 // ← Low = Fast
+ //     }
   });
   video.hide();
   
@@ -158,7 +160,7 @@ function setup() {
 
   // Grid setup
 
-  sizeH = 30;
+  sizeH = 60;
   cols = floor(width / sizeH - 1);
   rows = floor(height / sizeH - 1);
 
@@ -217,7 +219,7 @@ function draw() {
     }
   }
   
-  // Lets add life if the mouse is on top
+  // Lets add life if the index is there
   
   HandInteraction();
   
@@ -227,8 +229,8 @@ function draw() {
   nextGrid = temp;
 
   push();
-  translate(width - 495, 30);
-  scale(0.70);  
+  translate(width - (width/4), 30);
+  scale(0.5);  
   image(video, 0, 0);
   pop();
 }
