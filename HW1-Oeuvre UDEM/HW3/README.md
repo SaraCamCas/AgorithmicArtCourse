@@ -13,7 +13,7 @@ This project captures video from your webcam and:
 * Converts the image inside each box into ASCII art using the ascii_magic library
 * Displays both the original detection and the ASCII art version on top
 
-The result: [!](HW1-Oeuvre UDEM\HW3\Example\Example.gif)
+The result: [!](https://github.com/SaraCamCas/AgorithmicArtCourse/blob/main/HW1-Oeuvre%20UDEM/HW3/Example/Example.gif)
 
 ## How to run
 
