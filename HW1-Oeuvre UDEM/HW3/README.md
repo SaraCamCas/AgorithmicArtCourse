@@ -10,7 +10,7 @@ This project captures video from your webcam and:
 
 * Detects objects in real-time using YOLOv8
 * Tracks objects and displays bounding boxes with labels and confidence scores
-* Converts the image inside each box into ASCII art using the ascii_magic library
+* Converts the image inside one box into ASCII art using the ascii_magic library
 * Displays both the original detection and the ASCII art version on top
 
 The result: ![](https://github.com/SaraCamCas/AgorithmicArtCourse/blob/main/HW1-Oeuvre%20UDEM/HW3/Example/Example.gif)
