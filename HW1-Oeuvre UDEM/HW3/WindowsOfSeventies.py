@@ -189,7 +189,7 @@ color = (0, 0, 0)
 textcolor = (255,0, 255)
 
 # Size of the ASCII 
-sizeLettes = 1
+sizeLettes = 4
 
 # We turn the camera on
 cap = cv2.VideoCapture(0)
