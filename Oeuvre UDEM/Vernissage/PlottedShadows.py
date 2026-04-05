@@ -133,7 +133,10 @@ def plottedShadow(width, height, result, percentage, totalPoints, totalEmo):
     fig.patch.set_visible(False)  # Removes figure background
     ax.patch.set_visible(False)   # Removes axes background
     plt.savefig('Oeuvre UDEM\Vernissage\savedSVG.svg')
-    plt.savefig('Oeuvre UDEM\Vernissage\Examples\Example_README_Plot.png', dpi=300, bbox_inches='tight')
+
+    # If you want to save the plot as a PNG, uncomment the line below and comment out the line above
+    #plt.savefig('Oeuvre UDEM\Vernissage\Examples\Example_README_Plot.png', dpi=300, bbox_inches='tight')
+
     plt.show()
     
 
@@ -175,7 +178,9 @@ while cap.isOpened():
     # Break loop if 'f' is pressed
     if cv2.waitKey(1) & 0xFF == ord('f'):
         print("New frame plotted")
-        cv2.imwrite('Oeuvre UDEM\Vernissage\Examples\Example_README_frame.png', annotated_frame)
+
+        # If you want to save the annotated frame as a PNG, uncomment the line below
+        # cv2.imwrite('Oeuvre UDEM\Vernissage\Examples\Example_README_frame.png', annotated_frame)
         break
 
         

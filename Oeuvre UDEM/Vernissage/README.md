@@ -1,6 +1,6 @@
 # Plotted Shadows
 
-![Title](Oeuvre UDEM\Vernissage\Examples\Titre.png)
+![Title](https://github.com/SaraCamCas/AgorithmicArtCourse/blob/main/Oeuvre%20UDEM/Vernissage/Examples/Titre.png)
 
 **Plotted Shadows** is an interactive art piece that transforms your webcam feed into contour art.
 
@@ -17,9 +17,9 @@ This project captures live video from your webcam and:
 - Saves the final result as an **SVG file**
     
 Example output:  
-![Plotted Shadows input](Oeuvre UDEM\Vernissage\Examples\Example_README_frame.png)
+![Plotted Shadows Input](https://github.com/SaraCamCas/AgorithmicArtCourse/blob/main/Oeuvre%20UDEM/Vernissage/Examples/Example_README_frame.png)
 
-![Plotted Shadows Output](Oeuvre UDEM\Vernissage\Examples\Example_README_Plot.png)
+![Plotted Shadows Output](https://github.com/SaraCamCas/AgorithmicArtCourse/blob/main/Oeuvre%20UDEM/Vernissage/Examples/Example_README_Plot.png)
 
 ## How to Run
 
@@ -47,6 +47,8 @@ The program will:
 ## Pen Plotter
 
 This project was designed for use with a **pen plotter** (which is why the output is saved as an SVG, specifically the [UUNA TEK](uunatek.com), iDraw 2 A3 pen plotter, [aka idrawhome](https://idrawhome.com/products/idrawhome-2-0-h-structure-xy-plotter-a3-plotting-range-with-plate)).
+
+![](https://github.com/SaraCamCas/AgorithmicArtCourse/blob/main/Oeuvre%20UDEM/Vernissage/Examples/PenPlotter.gif)
 
 For more information on using an SVG file with this pen plotter:
 
