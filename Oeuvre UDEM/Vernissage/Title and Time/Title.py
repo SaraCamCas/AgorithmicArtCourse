@@ -15,7 +15,7 @@ ax.text(0, 0.3, '(✿◠‿◠)', horizontalalignment='left',fontsize=15, fontwe
 plt.axis('off')
 
 # Uncomment the line below to save as SVG  
-#plt.savefig('Oeuvre UDEM\\Vernissage\\Title and Time\\Titresvg')
+#plt.savefig('Oeuvre UDEM\Vernissage\Examples\Titre.svg')
 
-plt.savefig('Oeuvre UDEM\\Vernissage\\Title and Time\\Titre.png', dpi=300, bbox_inches='tight')
+plt.savefig('Oeuvre UDEM\Vernissage\Examples\Titre.png', dpi=300, bbox_inches='tight')
 plt.show()

@@ -132,7 +132,8 @@ def plottedShadow(width, height, result, percentage, totalPoints, totalEmo):
     plt.axis('off')
     fig.patch.set_visible(False)  # Removes figure background
     ax.patch.set_visible(False)   # Removes axes background
-    plt.savefig('Oeuvre UDEM/Vernissage/savedSVG.svg')
+    plt.savefig('Oeuvre UDEM\Vernissage\savedSVG.svg')
+    plt.savefig('Oeuvre UDEM\Vernissage\Examples\Example_README_Plot.png', dpi=300, bbox_inches='tight')
     plt.show()
     
 
@@ -152,7 +153,7 @@ height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 if not cap.isOpened():
     print("Error: Could not open camera")
     exit()
-print("Live feed started. Press 'd' to quit.")
+print("Live feed started. Press 'f' to print frame.")
 
 while cap.isOpened():
     success, frame = cap.read()
@@ -174,12 +175,14 @@ while cap.isOpened():
     # Break loop if 'f' is pressed
     if cv2.waitKey(1) & 0xFF == ord('f'):
         print("New frame plotted")
+        cv2.imwrite('Oeuvre UDEM\Vernissage\Examples\Example_README_frame.png', annotated_frame)
         break
 
         
 
     
 plottedShadow(width, height, results, percentage, points, emoticons)
+
 cap.release()
 cv2.destroyAllWindows()
 print("Live feed ended")

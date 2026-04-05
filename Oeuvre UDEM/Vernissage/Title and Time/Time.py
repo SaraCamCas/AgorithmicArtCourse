@@ -13,7 +13,7 @@ ax.text(0, 0.29, '-°·_·°-', horizontalalignment='left',
 plt.axis('off')
 
 # Uncomment the line below to save as SVG  
-#plt.savefig('Oeuvre UDEM\\Vernissage\\Title and Time\\Time.svg')
+#plt.savefig('Oeuvre UDEM\Vernissage\Examples\Time.svg')
 
-plt.savefig('Oeuvre UDEM\\Vernissage\\Title and Time\\Time.png', dpi=300, bbox_inches='tight')
+plt.savefig('Oeuvre UDEM\Vernissage\Examples\Time.png', dpi=300, bbox_inches='tight')
 plt.show()
